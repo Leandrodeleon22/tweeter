@@ -1,0 +1,16 @@
+header {
+  height: 520px;
+  width: 100%;
+  background-image: url("../images/45-degree-fabric-dark.png");
+  background-color: rgba(255, 166, 0, 0.93);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 120px;
+}
+
+header div h2 {
+  margin: 0;
+  color: white;
+}

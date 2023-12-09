@@ -1,0 +1,36 @@
+.new-tweet form label {
+  display: block;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+}
+
+#tweet-text {
+  border: none;
+  border-bottom: 2px solid black;
+  width: 100%;
+  background-color: transparent;
+  height: 3rem;
+}
+
+#tweet-text:focus {
+  outline: none !important;
+  border: 1.5px solid gray;
+}
+
+.new-tweet form div {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-tweet form div button {
+  border: none;
+  background-color: #4056a1;
+  color: white;
+  padding: 0.25em 0.75em;
+  font-family: "Bungee", sans-serif;
+}
+
+.counter {
+  font-family: "Bungee", sans-serif;
+}
