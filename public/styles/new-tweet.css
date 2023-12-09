@@ -6,7 +6,7 @@
 
 #tweet-text {
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid black;
   width: 100%;
   background-color: transparent;
   height: 3rem;
@@ -15,6 +15,7 @@
 #tweet-text:focus {
   outline: none !important;
   border: 1.5px solid gray;
+  border-bottom: 3px solid black;
 }
 
 .new-tweet form div {
@@ -29,8 +30,79 @@
   color: white;
   padding: 0.25em 0.75em;
   font-family: "Bungee", sans-serif;
+  cursor: pointer;
 }
 
 .counter {
   font-family: "Bungee", sans-serif;
+}
+
+article {
+  border: 3px solid rgb(43, 43, 43);
+  margin-top: 3rem;
+  padding: 1.5rem;
+}
+
+article:hover {
+  box-shadow: 7px 5px rgba(99, 99, 99, 0.305);
+}
+
+article > p {
+  font-weight: 600;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user div img {
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-right: 1rem;
+}
+
+.user > span {
+  font-weight: 600;
+  color: #cacede;
+}
+
+.bottom-details {
+  border-top: 4px solid black;
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottom-details p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.icons i {
+  color: #4056a1;
+}
+
+.icons i:not(:last-child) {
+  margin-right: 0.25em;
+}
+
+.icons > i:hover {
+  color: rgba(255, 166, 0, 0.93);
+}
+
+.icons i sup {
+  position: relative;
+  top: -1.25em;
+  right: -2px;
+  font-size: 40%;
+  color: black;
 }
