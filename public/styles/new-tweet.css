@@ -89,6 +89,7 @@ article > p {
 
 .icons i {
   color: #4056a1;
+  cursor: pointer;
 }
 
 .icons i:not(:last-child) {
