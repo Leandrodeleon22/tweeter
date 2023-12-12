@@ -46,8 +46,25 @@
 $(document).ready(function () {
   $("#tweet").on("submit", function (event) {
     event.preventDefault();
-    const input = $("#tweet-text").val();
-    console.log(input);
+    //validate if message length is more than 140
+    const inputLength = $("#tweet-text").val().length;
+
+    if (inputLength > 140) {
+      // $(".message").removeClass("hidden");
+      $("#tweet")
+        .children(":first-child")
+        .after('<span class="message">*Message is too long</span>');
+      throw Error("Message is too long");
+    }
+
+    const text = $("#tweet-text").val();
+
+    let newText = "";
+    for (let i = 0; i < text.length; i += 35) {
+      newText += text.substring(i, i + 35) + "\n";
+    }
+
+    $("#tweet-text").val(newText.trim());
 
     const actionUrl = $(this).attr("action");
     const formData = $(this).serialize();
@@ -62,9 +79,11 @@ $(document).ready(function () {
         $(".message").addClass("hidden");
       },
       error: function (xhr, status, error) {
-        console.log(error);
+        console.log(error, xhr, status);
         if (error === "Bad Request") {
-          $(".message").removeClass("hidden");
+          $("#tweet")
+            .children(":first-child")
+            .after('<span class="message">*Cant be empty</span>');
         }
       },
     });

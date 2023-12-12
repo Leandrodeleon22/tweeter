@@ -79,8 +79,8 @@
         <h2>Compose Tweet</h2>
         <form id="tweet" method="POST" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>
-          <span class="message hidden">* cant be empty</span>
-          <textarea name="text" id="tweet-text"></textarea>
+          <!-- <span class="message">*Invalid message</span> -->
+          <textarea rows="4" cols="10" name="text" id="tweet-text"></textarea>
           <div>
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
