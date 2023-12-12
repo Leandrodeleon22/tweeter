@@ -46,7 +46,9 @@
 $(document).ready(function () {
   $("#tweet").on("submit", function (event) {
     event.preventDefault();
-    $("#tweet-text").val("");
+    const input = $("#tweet-text").val();
+    console.log(input);
+
     const actionUrl = $(this).attr("action");
     const formData = $(this).serialize();
     // console.log(formData);
@@ -56,9 +58,14 @@ $(document).ready(function () {
       data: formData,
       success: function (data) {
         loadTweets();
+        $("#tweet-text").val("");
+        $(".message").addClass("hidden");
       },
       error: function (xhr, status, error) {
         console.log(error);
+        if (error === "Bad Request") {
+          $(".message").removeClass("hidden");
+        }
       },
     });
   });

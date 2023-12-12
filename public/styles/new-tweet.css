@@ -107,3 +107,11 @@ article > p {
   font-size: 40%;
   color: black;
 }
+
+.message {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
