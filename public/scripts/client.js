@@ -76,6 +76,7 @@ $(document).ready(function () {
       success: function (data) {
         loadTweets();
         $("#tweet-text").val("");
+        $(".counter").val(140);
         $(".message").addClass("hidden");
       },
       error: function (xhr, status, error) {
@@ -137,6 +138,6 @@ const createTweetElement = (data) => {
 const renderTweets = (tweets) => {
   tweets.forEach((user) => {
     createTweetElement(user);
-    $(".container").append(createTweetElement(user));
+    $(".container").children(":first-child").after(createTweetElement(user));
   });
 };
