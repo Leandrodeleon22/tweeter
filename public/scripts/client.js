@@ -1,3 +1,4 @@
+// import { format, render, cancel, register } from "timeago.js";
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
@@ -45,15 +46,15 @@
 $(document).ready(function () {
   $("#tweet").on("submit", function (event) {
     event.preventDefault();
+    $("#tweet-text").val("");
     const actionUrl = $(this).attr("action");
     const formData = $(this).serialize();
-    console.log(formData);
+    // console.log(formData);
     $.ajax({
       url: actionUrl,
       type: "POST",
       data: formData,
       success: function (data) {
-        console.log(data);
         loadTweets();
       },
       error: function (xhr, status, error) {
@@ -68,7 +69,7 @@ const loadTweets = () => {
   $.ajax("http://localhost:8080/tweets", {
     type: "GET",
   }).then(function (data) {
-    console.log(data);
+    // console.log(data);
     renderTweets(data);
   });
 };
@@ -77,6 +78,7 @@ const createTweetElement = (data) => {
   const { name, avatars, handle } = data.user;
   const { text } = data.content;
   const { created_at } = data;
+  const { format } = timeago;
 
   const html = `
   <article>
@@ -93,7 +95,7 @@ const createTweetElement = (data) => {
         </p>
 
         <div class="bottom-details">
-          <p>10 days ago</p>
+          <p>${format(created_at)}</p>
           <div class="icons">
             <i class="fa-solid fa-flag"></i>
             <i class="fa-solid fa-retweet"></i>
