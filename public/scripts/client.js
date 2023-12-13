@@ -54,7 +54,8 @@ $(document).ready(function () {
       $("#tweet")
         .children(":first-child")
         .after('<span class="message">*Message is too long</span>');
-      throw Error("Message is too long");
+      return;
+      // throw Error("Message is too long");
     }
 
     const text = $("#tweet-text").val();
@@ -75,6 +76,7 @@ $(document).ready(function () {
       data: formData,
       success: function (data) {
         loadTweets();
+        console.log(data);
         $("#tweet-text").val("");
         $(".counter").val(140);
         $(".message").addClass("hidden");
@@ -89,7 +91,7 @@ $(document).ready(function () {
       },
     });
   });
-  loadTweets();
+  // loadTweets();
 });
 
 const loadTweets = () => {
@@ -100,6 +102,9 @@ const loadTweets = () => {
     renderTweets(data);
   });
 };
+
+loadTweets();
+// loadTweets();
 
 const createTweetElement = (data) => {
   const { name, avatars, handle } = data.user;
@@ -136,8 +141,15 @@ const createTweetElement = (data) => {
 };
 
 const renderTweets = (tweets) => {
+  // console.log(tweets);
+  const container = $(".container");
+  const children = container.children();
+  children.not(":first-child").remove();
+
+  // container.empty();
+
   tweets.forEach((user) => {
-    createTweetElement(user);
-    $(".container").children(":first-child").after(createTweetElement(user));
+    // createTweetElement(user);
+    container.children(":first-child").after(createTweetElement(user));
   });
 };
