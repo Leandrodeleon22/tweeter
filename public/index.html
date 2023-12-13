@@ -76,10 +76,12 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+        <!-- <h2>Compose Tweet</h2> -->
+        <div class="message hidden long"><p>Message is too long</p></div>
+        <div id="empty" class="message hidden empty"><p>cant be empty</p></div>
         <form id="tweet" method="POST" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>
-          <!-- <span class="message">*Invalid message</span> -->
+
           <textarea rows="4" cols="10" name="text" id="tweet-text"></textarea>
           <div>
             <button type="submit">Tweet</button>

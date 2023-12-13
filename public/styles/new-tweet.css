@@ -110,6 +110,14 @@ article > p {
 
 .message {
   color: red;
+  padding: 1rem;
+
+  border: 2px solid red;
+  margin-bottom: 3rem;
+}
+
+.message p {
+  margin: 0;
 }
 
 .hidden {

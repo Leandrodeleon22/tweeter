@@ -48,12 +48,29 @@ $(document).ready(function () {
     event.preventDefault();
     //validate if message length is more than 140
     const inputLength = $("#tweet-text").val().length;
+    if (inputLength === 0) {
+      $(".empty").slideDown("slow");
+      $(".empty").css({
+        display: "flex",
+        "justify-content": "center",
+        "align-items": "center",
+        " border": "2px solid red",
+      });
 
+      $(".long").hide();
+      return;
+    }
     if (inputLength > 140) {
       // $(".message").removeClass("hidden");
-      $("#tweet")
-        .children(":first-child")
-        .after('<span class="message">*Message is too long</span>');
+      $(".long").slideDown("slow");
+      $(".long").css({
+        display: "flex",
+        "justify-content": "center",
+        "align-items": "center",
+        " border": "2px solid red",
+      });
+
+      $(".empty").hide();
       return;
       // throw Error("Message is too long");
     }
@@ -80,13 +97,12 @@ $(document).ready(function () {
         $("#tweet-text").val("");
         $(".counter").val(140);
         $(".message").addClass("hidden");
+        $(".long, .empty").hide();
       },
       error: function (xhr, status, error) {
         console.log(error, xhr, status);
         if (error === "Bad Request") {
-          $("#tweet")
-            .children(":first-child")
-            .after('<span class="message">*Cant be empty</span>');
+          return;
         }
       },
     });
