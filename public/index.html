@@ -77,8 +77,15 @@
     <main class="container">
       <section class="new-tweet">
         <!-- <h2>Compose Tweet</h2> -->
-        <div class="message hidden long"><p>Message is too long</p></div>
-        <div id="empty" class="message hidden empty"><p>cant be empty</p></div>
+        <div class="message hidden long">
+          <p>
+            Maximum character limit reached. Please reduce the length of your
+            message.
+          </p>
+        </div>
+        <div id="empty" class="message hidden empty">
+          <p>Oops! Looks like this field is empty. Please fill it in</p>
+        </div>
         <form id="tweet" method="POST" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>
 

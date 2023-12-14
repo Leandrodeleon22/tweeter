@@ -51,10 +51,11 @@ $(document).ready(function () {
     if (inputLength === 0) {
       $(".empty").slideDown("slow");
       $(".empty").css({
+        "font-weight": "600",
         display: "flex",
         "justify-content": "center",
         "align-items": "center",
-        " border": "2px solid red",
+        border: "3px solid red",
       });
 
       $(".long").hide();
@@ -64,10 +65,11 @@ $(document).ready(function () {
       // $(".message").removeClass("hidden");
       $(".long").slideDown("slow");
       $(".long").css({
+        "font-weight": "600",
         display: "flex",
         "justify-content": "center",
         "align-items": "center",
-        " border": "2px solid red",
+        border: "3px solid red",
       });
 
       $(".empty").hide();
@@ -127,19 +129,28 @@ const createTweetElement = (data) => {
   const { text } = data.content;
   const { created_at } = data;
   const { format } = timeago;
+  const container = $("<div/>");
 
+  const tweetName = container.text(name).html();
+  // const tweetAvatars = container.text(avatars).html();
+  const tweetHandle = container.text(handle).html();
+  // const tweetCreated_at = container.text(created_at);
+  // const tweetFormat = container.text(format);
+  const tweetText = container.text(text).html();
+
+  console.log(tweetName);
   const html = `
   <article>
         <div class="user">
           <div class="user-name">
             <img src=${avatars} alt="woman" />
-            <span>${name}</span>
+            <span>${tweetName}</span>
           </div>
-          <span>${handle}</span>
+          <span>${tweetHandle}</span>
         </div>
 
         <p>
-          ${text}
+          ${tweetText}
         </p>
 
         <div class="bottom-details">
@@ -166,6 +177,7 @@ const renderTweets = (tweets) => {
 
   tweets.forEach((user) => {
     // createTweetElement(user);
+
     container.children(":first-child").after(createTweetElement(user));
   });
 };
