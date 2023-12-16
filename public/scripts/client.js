@@ -89,6 +89,8 @@ $(document).ready(function () {
     const actionUrl = $(this).attr("action");
     const formData = $(this).serialize();
     // console.log(formData);
+
+    //AJAX CREATE
     $.ajax({
       url: actionUrl,
       type: "POST",
@@ -108,8 +110,16 @@ $(document).ready(function () {
         }
       },
     });
+
+    // loadTweets();
   });
-  // loadTweets();
+
+  $(document).ready(function () {
+    //FORM TOGGLE
+    $(".red-icon").on("click", function () {
+      $("#tweet").slideToggle();
+    });
+  });
 });
 
 const loadTweets = () => {

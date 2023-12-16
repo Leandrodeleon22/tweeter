@@ -21,6 +21,39 @@ nav > span {
   align-items: center;
 }
 
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
 .red-icon {
   color: red;
+  cursor: pointer;
+  animation: bounce 1s infinite;
+}
+
+.go-up {
+  color: white;
+  font-size: 1.75rem;
+  background-color: red;
+  z-index: 1000;
+  position: fixed;
+  left: 92%;
+  bottom: 3%;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.go-up i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
