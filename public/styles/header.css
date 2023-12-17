@@ -14,4 +14,20 @@ header {
 header div h2 {
   margin: 0;
   color: white;
+  font-weight: 300;
+}
+
+header div h2 span {
+  font-weight: 600;
+}
+
+@media screen and (min-width: 827px) {
+  header {
+    margin-left: 5rem;
+    padding-top: 2rem;
+  }
+  header div img {
+    height: 13rem;
+    width: 13rem;
+  }
 }

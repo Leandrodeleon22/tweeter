@@ -28,6 +28,13 @@ main {
   margin: 0 auto;
   margin-bottom: 3rem;
 }
+
+@media screen and (min-width: 827px) {
+  body {
+    display: flex;
+    margin-top: 13rem;
+  }
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */

@@ -123,3 +123,9 @@ article > p {
 .hidden {
   display: none;
 }
+
+@media screen and (min-width: 827px) {
+  .container {
+    margin: 0 5rem;
+  }
+}

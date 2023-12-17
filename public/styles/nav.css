@@ -2,7 +2,7 @@ nav {
   height: 120px;
   width: 100%;
   padding: 0 1.5em;
-  background-color: #4056a1;
+
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -19,6 +19,14 @@ nav > span {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.nav-write-tweet p {
+  margin: 0;
+}
+
+.nav-write-tweet p span {
+  font-weight: 600;
 }
 
 @keyframes bounce {
@@ -43,8 +51,8 @@ nav > span {
   background-color: red;
   z-index: 1000;
   position: fixed;
-  left: 92%;
-  bottom: 3%;
+  left: 85%;
+  bottom: 8%;
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
@@ -56,4 +64,30 @@ nav > span {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 827px) {
+  nav {
+    background-color: #4056a1;
+    position: absolute;
+    top: 0;
+  }
+}
+
+@media screen and (min-width: 1036px) {
+  .go-up {
+    left: 90%;
+  }
+}
+
+@media screen and (min-width: 1360px) {
+  .go-up {
+    left: 92%;
+  }
+}
+
+@media screen and (min-width: 1860px) {
+  .go-up {
+    left: 95%;
+  }
 }
