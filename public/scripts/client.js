@@ -1,55 +1,13 @@
-// import { format, render, cancel, register } from "timeago.js";
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-// const data = require("../../data-files/initial-tweets.json");
-
-// const data = {
-//   "user": {
-//     "name": "Newton",
-//     "avatars": "https://i.imgur.com/73hZDYK.png",
-//     "handle": "@SirIsaac"
-//   },
-//   "content": {
-//     "text": "If I have seen further it is by standing on the shoulders of giants"
-//   },
-//   "created_at": 1461116232227
-// }
-
-// const data = [
-//   {
-//     user: {
-//       name: "Newton",
-//       avatars: "https://i.imgur.com/73hZDYK.png",
-//       handle: "@SirIsaac",
-//     },
-//     content: {
-//       text: "If I have seen further it is by standing on the shoulders of giants",
-//     },
-//     created_at: 1461116232227,
-//   },
-//   {
-//     user: {
-//       name: "Descartes",
-//       avatars: "https://i.imgur.com/nlhLi3I.png",
-//       handle: "@rd",
-//     },
-//     content: {
-//       text: "Je pense , donc je suis",
-//     },
-//     created_at: 1461113959088,
-//   },
-// ];
-
 $(document).ready(function () {
   $("#tweet").on("submit", function (event) {
     event.preventDefault();
-    //validate if message length is more than 140
+
     const inputLength = $("#tweet-text").val().length;
+
+    //VALIDATE IF MESSAGE LENGTH IS EMPTY
     if (inputLength === 0) {
       $(".empty").slideDown("slow");
+      // style for the message
       $(".empty").css({
         "font-weight": "600",
         display: "flex",
@@ -61,9 +19,11 @@ $(document).ready(function () {
       $(".long").hide();
       return;
     }
+
+    //VALIDATE IF MESSAGE LENGTH IS MORE THAN 140
     if (inputLength > 140) {
-      // $(".message").removeClass("hidden");
       $(".long").slideDown("slow");
+      // STYLE FOR THE MESSAGE VALIDATION
       $(".long").css({
         "font-weight": "600",
         display: "flex",
@@ -74,11 +34,10 @@ $(document).ready(function () {
 
       $(".empty").hide();
       return;
-      // throw Error("Message is too long");
     }
 
+    // IF MESSAGE IS TOO LONG CREATE NEW LINE
     const text = $("#tweet-text").val();
-
     let newText = "";
     for (let i = 0; i < text.length; i += 35) {
       newText += text.substring(i, i + 35) + "\n";
@@ -86,54 +45,50 @@ $(document).ready(function () {
 
     $("#tweet-text").val(newText.trim());
 
+    //AJAX CREATE TWEET FROM THE FORM
     const actionUrl = $(this).attr("action");
     const formData = $(this).serialize();
-    // console.log(formData);
 
-    //AJAX CREATE
     $.ajax({
       url: actionUrl,
       type: "POST",
       data: formData,
       success: function (data) {
         loadTweets();
-        console.log(data);
+
         $("#tweet-text").val("");
         $(".counter").val(140);
         $(".message").addClass("hidden");
         $(".long, .empty").hide();
       },
       error: function (xhr, status, error) {
-        console.log(error, xhr, status);
         if (error === "Bad Request") {
           return;
         }
       },
     });
-
-    // loadTweets();
   });
 
+  //FORM TOGGLE
   $(document).ready(function () {
-    //FORM TOGGLE
     $(".red-icon").on("click", function () {
       $("#tweet").slideToggle();
     });
   });
 });
 
+//LOAD ALL TWEETS
 const loadTweets = () => {
   $.ajax("http://localhost:8080/tweets", {
     type: "GET",
   }).then(function (data) {
-    // console.log(data);
     renderTweets(data);
   });
 };
 
 loadTweets();
-// loadTweets();
 
+//CREATE TWEET
 const createTweetElement = (data) => {
   const { name, avatars, handle } = data.user;
   const { text } = data.content;
@@ -142,13 +97,9 @@ const createTweetElement = (data) => {
   const container = $("<div/>");
 
   const tweetName = container.text(name).html();
-  // const tweetAvatars = container.text(avatars).html();
   const tweetHandle = container.text(handle).html();
-  // const tweetCreated_at = container.text(created_at);
-  // const tweetFormat = container.text(format);
   const tweetText = container.text(text).html();
 
-  console.log(tweetName);
   const html = `
   <article>
         <div class="user">
@@ -177,17 +128,13 @@ const createTweetElement = (data) => {
   return html;
 };
 
+// RENDER TWEETS
 const renderTweets = (tweets) => {
-  // console.log(tweets);
   const container = $(".container");
   const children = container.children();
   children.not(":first-child").remove();
 
-  // container.empty();
-
   tweets.forEach((user) => {
-    // createTweetElement(user);
-
     container.children(":first-child").after(createTweetElement(user));
   });
 };

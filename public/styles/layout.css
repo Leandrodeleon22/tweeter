@@ -29,7 +29,7 @@ main {
   margin-bottom: 3rem;
 }
 
-@media screen and (min-width: 827px) {
+@media screen and (min-width: 888px) {
   body {
     display: flex;
     margin-top: 13rem;

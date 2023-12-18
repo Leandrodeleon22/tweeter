@@ -66,7 +66,7 @@ nav > span {
   transform: translate(-50%, -50%);
 }
 
-@media screen and (min-width: 827px) {
+@media screen and (min-width: 888px) {
   nav {
     background-color: #4056a1;
     position: absolute;
