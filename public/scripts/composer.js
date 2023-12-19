@@ -1,7 +1,6 @@
 $(window).scroll(function () {
   const isVisble = $(this).scrollTop() >= 400;
 
-  console.log($(this).scrollTop());
   if (!isVisble) {
     return $(".go-up").fadeOut();
   }
@@ -12,7 +11,6 @@ $(document).ready(function () {
   $(window).scroll(function () {
     let isVisble = $(this).scrollTop() >= 400;
 
-    console.log($(this).scrollTop());
     if (!isVisble) {
       return $(".go-up").fadeOut();
     }

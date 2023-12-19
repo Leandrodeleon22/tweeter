@@ -69,7 +69,7 @@ $(document).ready(function () {
     });
   });
 
-  //FORM TOGGLE
+  // FORM TOGGLE
   $(document).ready(function () {
     $(".red-icon").on("click", function () {
       $("#tweet").slideToggle();
