@@ -124,7 +124,7 @@ article > p {
   display: none;
 }
 
-@media screen and (min-width: 827px) {
+@media screen and (min-width: 888px) {
   .container {
     margin: 0 5rem;
   }
