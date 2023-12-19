@@ -19,4 +19,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final product
 
-!["screenshot description"](https://github.com/Leandrodeleon22/tweeter/blob/master/tweeter%201.png)
+!["screenshot description"](/tweeter-1.png)
+
+!["screenshot description"](/tweeter-2.png)
+
+!["screenshot description"](/tweeter-3.gif)
